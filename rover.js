@@ -10,6 +10,7 @@ class Rover {
    }
    receiveMessage(message) {
       let results = [];
+      // Iterate through the commands in the message.
       for (let i = 0; i < message.commands.length; i++) {
          let command = message.commands[i];
          let result = { completed: false };
@@ -17,7 +18,7 @@ class Rover {
          if (command.commandType === "MOVE") {
             if (this.mode === "NORMAL") {
                this.position = command.value;
-               result.completed = true;
+               result.completed = true;// Set the result as completed.
             }
          } else if (command.commandType === "STATUS_CHECK") {
             result.completed = true;
@@ -30,7 +31,7 @@ class Rover {
             this.mode = command.value;//String representing rover mode
             result.completed = true;
          }
-         results.push(result);
+         results.push(result);// Push the result into the results array.
       }
 
       return {
